@@ -1,15 +1,15 @@
 const apresentacao = "Olá me chamo Bot Lorran Hetero flex, qual o seu nome? \n"
-const apresentacao2 = " Seja muito bem vindo, como posso te ajudar hoje\n"
-const tituloSubmenu = "Selecione uma das opções abaixo \n"
-const mensagemExit = "digite 'sair' para voltar"
+const apresentacao2 = " Seja muito bem vindo, como posso te ajudar hoje?\n \n"
+const tituloSubmenu = "Selecione uma das opções abaixo \n \n"
+const mensagemExit = "digite 'sair' para voltar \n"
 
-const opcoesIniciais = ['WindFlags(bandeiras)' ,'Banners','Outros Serviços']
+const opcoesIniciais = ['WindFlags(bandeiras)\n' ,'Banners\n','Outros Serviços\n']
 //raciocinio windflags
-const windFlagsOpcoes = ['Consultar tamanhos e valores' , 'Informação sobre seu pedido em andamento','Falar diretamente com a empresa?','voltar ao menu anterior'] 
+const windFlagsOpcoes = ['Consultar tamanhos e valores \n' , 'Informação sobre seu pedido em andamento\n','Falar diretamente com a empresa?\n','voltar ao menu anterior\n'] 
 //raciocinio banners
-const bannersOpcoes = ['Consultar tamanhos e valores', 'Informação sobre seu pedido em andamento','Falar diretamente com a empresa?','voltar ao menu anterior'] 
+const bannersOpcoes = ['Consultar tamanhos e valores\n', 'Informação sobre seu pedido em andamento\n','Falar diretamente com a empresa?\n','voltar ao menu anterior\n'] 
 //raciocionio Outros serviços
-const outrosServicosOpcoes = ['Ser nosso parceiro' , 'Fazer uma reclamação', 'Falar diretamente com nossa empresa', 'voltar ao menu anterior']
+const outrosServicosOpcoes = ['Ser nosso parceiro\n' , 'Fazer uma reclamação\n', 'Falar diretamente com nossa empresa\n', 'voltar ao menu anterior\n']
 //titulo genérico para submenu
 
 
