@@ -11,39 +11,16 @@ const {
 
 const reutilizarTextoNaMensagem = require('./Services/reutilizarTextoNaMensagem.js');
 const inserirNovaOpcaoEscolhida = require('./Services/inserirNovaOpcaoEscolhida.js');
-const mudarEstadoEtapa = require('./Services/mudarEstadoEtapa.js');
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
+
+
 const fs = require('fs').promises
 
-async function verificaOuCriaCabecalho() {
-  try {
-    // Tenta acessar o arquivo
-    await fs.access('./registroDeUtilização.txt');
-
-    //  lê o conteúdo
-    const conteudo = await fs.readFile('./registroDeUtilização.txt', 'utf-8');
-
-    if (conteudo.trim() === '') {
-      // se o arquivo existir mas nao possuir nada
-      await fs.writeFile('./registroDeUtilização.txt', 'ID;Mensagem;Data/Hora\n', 'utf-8');
-      console.log('Cabeçalho escrito no arquivo vazio.');
-    } else {
-      console.log('Arquivo já contém conteúdo.');
-    }
-
-  } catch (err) {
-    // Se der erro no accesso(caso não exista ou nao ache o diretório), o arquivo não existe ele cria com cabeçalho
-    await fs.writeFile('./registroDeUtilização.txt', 'ID;Mensagem;Data/Hora\n', 'utf-8');
-    console.log('Arquivo criado com cabeçalho.');
-  }
-}
-
-verificaOuCriaCabecalho();
 
 async function escreveNoDoc(dadosUser, dadosMsg, dataLog) {
-  const linha = `${dadosUser};${dadosMsg};${dataLog}\n`
+  const linha = `Dados User: ${dadosUser}\n Texto Escrito: ${dadosMsg}\n - Data/Hora: ${dataLog}\n\n`
   try {
     await fs.appendFile('./registroDeUtilização.txt', linha);
     return 'log registrado'
@@ -65,13 +42,13 @@ bot.on('message', (msg) => {
   escreveNoDoc(idPessoa, input, registroDataHoraCompleto);
 
   if (input.toLowerCase() === 'sair') {
-    userData[idChat] = { etapa: 'menu', data: {}};
+    userData[idChat] = { etapa: 'menu', data: {} };
     bot.sendMessage(idChat, mensagemApresentacao);
     return;
   }
 
   if (!userData[idChat]) {
-    userData[idChat] = { etapa: 'menu', data: {} };//qual seu nome?
+    userData[idChat] = { etapa: 'menu', data: {} };
     bot.sendMessage(idChat, mensagemApresentacao);
     return;
   }
@@ -79,13 +56,10 @@ bot.on('message', (msg) => {
   switch (userData[idChat].etapa) {
     case 'menu':
       bot.sendMessage(idChat, reutilizarTextoNaMensagem(input) + mensagemPosApresentacao);
-      mudarEstadoEtapa(userData, idChat, 'etapa', 'menu.1');
-      /*userData[idChat] = {
+      userData[idChat] = {
         ...userData[idChat],
         etapa: 'menu.1'
-      }; */
-      console.log(userData[idChat].etapa);
-      
+      };
       break;
 
     case 'menu.1':
@@ -109,11 +83,10 @@ bot.on('message', (msg) => {
         return;
       }
 
-      mudarEstadoEtapa(userData, idChat, 'etapa', 'menu.2');
-      /* userData[idChat] = {
+      userData[idChat] = {
         ...userData[idChat],
         etapa: 'menu.2',
-      }; */
+      };
       break;
 
     case 'menu.2':
@@ -135,19 +108,18 @@ bot.on('message', (msg) => {
         bot.sendMessage(idChat, 'Limite-se somente às opções disponíveis');
         return
       }
-      mudarEstadoEtapa(userData, idChat, 'etapa', 'menu.3')
-      /* userData[idChat] = {
+
+      userData[idChat] = {
         ...userData[idChat],
         etapa: 'menu.3'
-      }; */
+      };
       break;
 
     default:
-      mudarEstadoEtapa(userData, idChat, 'etapa', 'menu')
-      /* userData[idChat] = {
+      userData[idChat] = {
         ...userData[idChat],
         etapa: 'menu'
-      }; */
+      };
       bot.sendMessage(idChat, 'ERRO:\nNão foi possivel processar sua requisição\nDigite qualquer coisa para tentarmos novamente');
       break;
   }
