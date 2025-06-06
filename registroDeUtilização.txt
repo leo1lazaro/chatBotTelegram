@@ -1,0 +1,20 @@
+Dados User: 968853153
+ Texto Escrito: Oi
+ - Data/Hora: 05/06/2025, 22:49:31
+
+Dados User: 968853153
+ Texto Escrito: Nathalia
+ - Data/Hora: 05/06/2025, 22:49:39
+
+Dados User: 968853153
+ Texto Escrito: 1
+ - Data/Hora: 05/06/2025, 22:49:45
+
+Dados User: 968853153
+ Texto Escrito: 1
+ - Data/Hora: 05/06/2025, 22:50:03
+
+Dados User: 968853153
+ Texto Escrito: Quero saber preço
+ - Data/Hora: 05/06/2025, 22:50:15
+
