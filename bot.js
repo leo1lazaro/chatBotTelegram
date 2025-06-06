@@ -71,7 +71,7 @@ bot.on('message', (msg) => {
   }
 
   if (!userData[idChat]) {
-    userData[idChat] = { etapa: 'menu', data: {} };
+    userData[idChat] = { etapa: 'menu', data: {} };//qual seu nome?
     bot.sendMessage(idChat, mensagemApresentacao);
     return;
   }

@@ -1,7 +1,7 @@
 function mudarEstadoEtapa(userData, idChat, etapa,nomeEtapa){
     userData[idChat] = {
         ...userData[idChat],
-        [etapa]: [nomeEtapa],
+        [etapa]: nomeEtapa,
       };
       return userData[idChat];
 }
